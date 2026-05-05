@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Hypertext Narrative</title>
+    <link rel="stylesheet" href="style.css">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script src="script.js" defer></script>
+</head>
+
+<body data-room="notes">
+
+  <div class="container note-container">
+      <img src="images/NotePaper.jpg" alt="Note paper"> 
+
+<div class="text-overlay">
+    <a href="index.html" style="color:#355005; text-decoration: none;">
+        <h1>Days of The Week</h1>
+    </a>
+    <ul style="padding: 0; margin-top: 10px;">
+        <li class="day-item">Monday</li>
+        <li class="day-item">Tuesday</li>
+        <li class="day-item">Wednesday</li>
+        <li class="day-item">Thursday</li>
+        <li class="day-item">Friday</li>
+        <li class="day-item">Saturday</li>
+        <li class="day-item">Sunday</li>
+    </ul>
+</div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const items = document.querySelectorAll('.day-item');
+      items.forEach((item, i) => {
+        // Each day appears 300ms after the previous one
+        setTimeout(() => {
+          item.classList.add('visible');
+        }, 500 + i * 300);
+      });
+    });
+  </script>
+ 
+
+
+</body>
+</html>

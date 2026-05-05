@@ -1,0 +1,262 @@
+/* FONTS ============================================================
+*/
+
+@font-face {
+  font-family: "Momo Signature";
+  src: url("fonts/MomoSignature.ttf") format("truetype");
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  font-family: "Momo Signature", serif;
+  background: linear-gradient(to bottom, #e3dad8, #a68a12);
+  display: flex; justify-content: center; align-items: center; overflow-x: hidden; 
+}
+
+/* LAYOUT & CONTAINER ============================================================
+*/
+
+/* This is where I had to do a lot of manual re-adjusting, trying to make most elements flexbox & such 
+B/C when I had originally made it, the hypertext narrative was solely on singular html files */
+.container { 
+  position: relative; 
+  width: 95vw;       
+  max-width: 1200px; 
+  margin: 0px auto;
+  line-height: 0;  
+}
+
+.container > img {
+  width: 100%;
+  height: auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* VIGNETTE OVERLAY============================================================ 
+ */
+
+.vignette{
+  position: absolute;
+top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: radial-gradient(ellipse at center, transparent 50%, rgba(10, 7, 2, 0.55) 100%);
+  z-index: 2;
+  pointer-events: none;
+}
+
+
+/* OVERLAY POSITIONS
+============================================================ */
+
+.top-left { 
+  position: absolute; 
+  top: 5%; 
+  left: 5%; 
+  padding: 1%; 
+  z-index: 20; 
+  line-height: normal; 
+}
+
+.top-right { 
+  position: absolute; 
+  top: 5%; 
+  right: 5%; 
+  padding: 1%; 
+  line-height: normal;
+  z-index: 20;
+}
+
+.bottom-left { 
+  position: absolute; 
+  bottom: 5%; 
+  left: 5%; 
+  padding: 1%; 
+  z-index: 10;
+  line-height: normal;
+}
+
+.bottom-right { 
+  position: absolute; 
+  bottom: 5%; 
+  right: 5%; 
+  padding: 1%; 
+  z-index: 15;
+  line-height: normal;
+}
+
+/* IMAGE EFFECTS
+============================================================ */
+.container a img {
+  transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+              filter 0.35s ease,
+              box-shadow 0.35s ease;
+  display: block;
+}
+ 
+.container a img:hover {
+  transform: scale(1.07);
+  filter: brightness(1.1) saturate(1.2) sepia(0.1);
+  box-shadow: 0 8px 30px rgba(180, 140, 40, 0.35);
+  cursor: none; 
+}
+
+
+/* ROOM LABEL TEXT */
+.top-right p,
+.bottom-left p,
+.bottom-right p {
+  color: #d4b860;
+  font-size: 2.5vw;
+  text-shadow: 0 0 20px rgba(212, 184, 96, 0.5);
+  margin: 0;
+  letter-spacing: 0.05em;
+}
+
+/* SPECIIFC COLOURS FOR ROOMS ============================================================ */
+
+/* OUTSIDE */
+body[data-room="outside"] {
+  background: linear-gradient(to bottom, #e3dad8, #a68a12);
+}
+ 
+/*LIVING ROOM */
+body[data-room="living-room"] {
+  background: linear-gradient(to bottom, #ddd0b8, #8a6a10);
+}
+ 
+/* BEDROOM */
+body[data-room="bedroom"] {
+  background: linear-gradient(to bottom, #c8d4d8, #3a5a6a);
+}
+ 
+/* KITCHEN */
+body[data-room="kitchen"] {
+  background: linear-gradient(to bottom, #dde4d8, #6a7a5a);
+}
+ 
+/* NOTES */
+body[data-room="notes"] {
+  background: linear-gradient(to bottom, #ede8de, #b8a878);
+}
+ 
+/* SWEET DREAMS*/
+body[data-room="sweet-dreams"] {
+  background: linear-gradient(160deg, #1a0a2e, #4a1a08, #1a0a18);
+}
+ 
+/* SWEET DREAMS PAGE ============================================================
+*/
+
+.sweet-title {
+  animation: title-breathe 4s ease-in-out infinite;
+}
+ 
+@keyframes title-breathe {
+  0%, 100% { opacity: 1; text-shadow: 0 0 20px rgba(209, 103, 0, 0.4); }
+  50%       { opacity: 0.7; text-shadow: 0 0 40px rgba(209, 103, 0, 0.8); }
+}
+ 
+
+/*TYPOGRAPHY CLASSES ============================================================ */
+
+.momo {
+  font-family: "Momo Signature", cursive;
+  font-size: 2vw; 
+  color: #355005;
+}
+.main-title {
+  position: absolute;
+  top: 5%;
+  right: 5%;
+  font-size: 5vw;
+  color: #355005;
+  z-index: 50;
+  line-height: normal;
+  text-shadow: 0 2px 12px rgba(53, 80, 5, 0.2);
+}
+
+.interactive-img {
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+              filter 0.3s ease;
+  cursor: none;
+}
+ 
+.interactive-img:hover {
+  transform: scale(1.08);
+  filter: brightness(1.1);
+}
+ 
+
+/* NOTES PAGE ============================================================ */
+
+.note-container {
+  max-width: 500px;
+  width: 70vw;      
+}
+
+.text-overlay {
+  position: absolute;
+  top: 15%;
+  left: 10%;
+  width: 80%;
+  z-index: 10001;
+  line-height: 1.2;
+}
+
+.note-container .text-overlay h1 {
+  font-size: 30px; 
+}
+
+.text-overlay li {
+  opacity: 0;
+  transform: translateX(-8px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  list-style: none;
+  font-size: 20px;
+  color: #355005;
+  padding: 2px 0;
+}
+ 
+/* MAIN TITLE ============================================================ */
+.main-title {
+  position: absolute;
+  top: 5%;
+  right: 5%;
+  font-size: 5vw;
+  color: #355005;
+  z-index: 50; 
+  line-height: normal;
+  text-shadow: 0 2px 12px rgba(53, 80, 5, 0.2);
+}
+
+.interactive-img {
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+              filter 0.3s ease;
+  cursor: pointer;
+}
+
+.interactive-img:hover {
+  transform: scale(1.08);
+  filter: brightness(1.1);
+}
+
+
+/* PAGE ENTRANCE ANIMATIONS 
+============================================================ */
+
+
+.fade-up {
+  opacity: 0;
+  transform: translateY(16px);
+  animation: fade-up-in 0.9s ease forwards;
+}
+ 
+@keyframes fade-up-in {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
